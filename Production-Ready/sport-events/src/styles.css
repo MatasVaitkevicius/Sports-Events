@@ -1,0 +1,55 @@
+body {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #ebebeb;
+  background-color: #2b3e50;
+}
+
+.container {
+  width: 100%;
+}
+
+.well {
+  box-shadow: none;
+  padding: 19px;
+  margin-bottom: 20px;
+  border-radius: 0;
+}
+
+.navbar-default {
+  background-color: #4e5d6c;
+  margin-top: 20px;
+}
+
+
+
+.form-control {
+  border-radius: 0;
+}
+
+.form-control:focus {
+  border-color: transparent;
+  outline: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+  font-size: 20px;
+}
+
+.navbar-default .btn-default  {
+  font-size: 20px;
+}
+
+.toast-success {
+  background-color: #51a351;
+}
+.toast-error {
+  background-color: #bd362f;
+}
+.toast-info {
+  background-color: #2f96b4;
+}
+.toast-warning {
+  background-color: #f89406;
+}

@@ -1,0 +1,70 @@
+em {
+  float: right;
+  color: #E05C65;
+  padding-left: 10px;
+}
+
+.error input {
+  background-color: #E3C3C5;
+}
+
+.error ::-webkit-input-placeholder {
+  color: #999;
+}
+
+.error ::-moz-placeholder {
+  color: #999;
+}
+
+.error :-moz-placeholder {
+  color: #999;
+}
+
+.error :-ms-input-placeholder {
+  color: #999;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+select:invalid {
+  color: #C7C7CD;
+}
+
+input:invalid {
+  color: #C7C7CD;
+}
+
+option {
+  color: #000000;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #df691a;
+  border-color: transparent;
+  border-radius: 0;
+  margin-bottom: 15px;
+}
+
+.btn-primary:hover {
+  background-color: #ff8c1a;
+}
+
+.btn-default {
+  color: #ffffff;
+  background-color: #4e5d6c;
+  border-color: transparent;
+  border-radius: 0;
+  margin-bottom: 15px;
+}
+
+.btn-default:hover {
+  background-color: #485563;
+}

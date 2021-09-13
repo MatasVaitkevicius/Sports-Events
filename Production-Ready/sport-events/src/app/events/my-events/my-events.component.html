@@ -1,0 +1,45 @@
+<div class="row">
+  <sorting [events]="myEvents"></sorting>
+</div>
+<div class="row" *ngFor="let event of myEvents">
+  <div class="col-md-10">
+    <collapsible-well>
+      <div well-title class="title">
+        {{event.name}}
+        <i *ngIf="event.voters.length > 3" class="glyphicon glyphicon-fire" style="color:red"></i>
+        <span *ngIf="event.canceled" style="color:red" class="pull-right">
+          CANCELED
+          <i class="glyphicon glyphicon-remove"></i>
+        </span>
+      </div>
+      <div well-body>
+        <img *ngIf="event.imageUrl" [src]="event?.imageUrl" [alt]="event?.name" class="event-image" height="42"
+             width="42">
+        <div><strong>Author:</strong> {{author}}</div>
+        <div><strong>Phone Number:</strong> {{event?.phoneNumber}}</div>
+        <div><strong>Date:</strong> {{event?.eventDate | date:'y-M-d'}}</div>
+        <div><strong>Event Time:</strong> {{event?.timeFrom}} - {{event?.timeTill}}</div>
+        <div *ngIf="event?.price > 0"><strong>Price:</strong> {{event?.price}}</div>
+        <div *ngIf="event?.price === 0"><strong>Price:</strong> FREE</div>
+        <div><strong>Sport Type:</strong> {{determineSportType(event?.sportTypeId)}}</div>
+        <div *ngIf="event.facebookEventUrl"><strong>Facebook Event Url:</strong> {{event?.facebookEventUrl}}</div>
+        <div><strong>Votes count:</strong> {{event?.voters.length}}</div>
+        <address *ngIf="event?.location.address !== null">
+          <strong>Address:</strong><br/>
+          {{event?.location?.country}}, {{event?.location?.city}}, {{event?.location?.address}}
+        </address>
+        <div *ngIf="event.description" class="description"><strong>Description:</strong> {{event?.description}}</div>
+      </div>
+    </collapsible-well>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-primary pull-left" [routerLink]="['/myEvents', event.eventId]">Edit</button>
+    <button *ngIf="event.canceled === false" class="btn btn-default pull-left" type="button"
+            (click)="changeEventState(event.eventId)">Cancel Event
+    </button>
+    <button *ngIf="event.canceled === true" class="btn btn-success pull-left" type="button"
+            (click)="changeEventState(event.eventId)">Restart Event
+    </button>
+  </div>
+</div>
+

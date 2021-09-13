@@ -1,0 +1,18 @@
+<div>
+  <h1>Upcoming Sport Events</h1>
+  <hr/>
+  <div class="row">
+    <sorting [events]="events"></sorting>
+    <button class="btn btn-default pull-right col-md-1 btn-sm" [class.active]="showCanceled === true"
+            (click)="toggleCanceledEvents()">Show canceled events
+    </button>
+  </div>
+  <div class="row">
+    <h1 class="term" *ngIf="searchTerm">Search term: {{searchTerm}}</h1>
+    <h1 class="term" *ngIf="filterTerm">Filtering by: {{filterTerm}}</h1>
+    <h1 class="term" *ngIf="events?.length === 0">No events found :(</h1>
+    <div *ngFor="let event of events" class="col-md-5">
+      <event-thumbnail [event]="event"></event-thumbnail>
+    </div>
+  </div>
+</div>

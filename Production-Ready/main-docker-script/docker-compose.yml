@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+
+    gateway:
+        image: gateway
+        depends_on:
+            - events
+        networks:
+            - front
+        ports:
+            - '${GATEWAY_PORT}:80'    
+            
+    ui:            
+        image: ui
+        networks:
+            - front
+            
+           
+    events:
+        image: events
+        depends_on:
+            - eventsDb
+        networks:
+            - databases
+            - front
+        environment:
+            Hosting__VirtualDirectory: 'events'
+            EventsDB__ConnectionString: 'Server=eventsDb;Database=Events;Username=postgres;'
+    eventsDb:
+        image: postgres:9
+        networks:
+            - databases
+
+networks:
+    front:
+        driver: bridge
+    databases:
+        driver: bridge

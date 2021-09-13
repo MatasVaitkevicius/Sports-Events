@@ -1,0 +1,7 @@
+<div class="col-md-3">
+  <div class="btn-group btn-group-sm" style="margin-right:20px;margin-left:20px">
+    <button class="btn btn-default" [class.active]="sortBy==='date'" (click)="sortByDate()">By Date</button>
+    <button class="btn btn-default" [class.active]="sortBy==='votes'" (click)="sortByVotes()">By Votes</button>
+    <button class="btn btn-default" [class.active]="sortBy==='name'" (click)=sortByName()>By Name</button>
+  </div>
+</div>

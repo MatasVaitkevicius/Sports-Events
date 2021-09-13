@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-11">
+      <h2>
+        <img *ngIf="event?.imageUrl" [src]="event?.imageUrl" [alt]="event?.name" class="event-image" height="42"
+             width="42">
+        {{event?.name | uppercase}}
+        <i *ngIf="event.voters.length > 3" class="glyphicon glyphicon-fire" style="color:red"></i>
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="details">
+        <div><strong>Author:</strong> {{determineAuthor(event?.userId)}}</div>
+        <div><strong>Phone Number:</strong> {{event?.phoneNumber}}</div>
+        <div><strong>Date:</strong> {{event?.eventDate | date:'y-M-d'}}</div>
+        <div><strong>Event Time:</strong> {{event?.timeFrom}} - {{event?.timeTill}}</div>
+        <div *ngIf="event?.price > 0"><strong>Price:</strong> {{event?.price | currency:'EUR':true}}</div>
+        <div *ngIf="event?.price === 0"><strong>Price:</strong> FREE</div>
+        <div><strong>Sport Type:</strong> {{sportType?.name}}</div>
+        <div *ngIf="event?.facebookEventUrl"><strong>Facebook Event Url:</strong> {{event?.facebookEventUrl}}</div>
+        <div><strong>Votes count:</strong> {{event?.voters.length}}</div>
+        <address *ngIf="event?.location.address !== null">
+          <strong>Address:</strong><br/>
+          {{event?.location?.country}}, {{event?.location?.city}}, {{event?.location?.address}}
+        </address>
+        <div *ngIf="event?.description" class="description"><strong>Description:</strong> {{event?.description}}</div>
+      </div>
+      <div class="col-md-1">
+        <div *ngIf="auth.isAuthenticated()">
+          <upvote (vote)="toggleVote(event)"
+                  [count]="event?.voters.length"
+                  [voted]="userHasVoted(event)">
+          </upvote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

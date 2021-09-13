@@ -1,0 +1,25 @@
+<div [routerLink]="['/events', event.eventId]" class="well hoverwell thumbnail">
+  <h2>
+    {{event?.name | uppercase}}
+    <i *ngIf="event.voters.length > 3" class="glyphicon glyphicon-fire" style="color:red"></i>
+  </h2>
+  <div>Author: {{event?.authorName}}</div>
+  <div>Sport Type: {{event?.sportTypeName}}</div>
+  <div>Date: {{event?.eventDate | date:'y-M-d'}}</div>
+  <div>Event Time: {{event?.timeFrom}} - {{event?.timeTill}}</div>
+  <div *ngIf="event?.price > 0"><strong>Price:</strong> {{event?.price | currency:'EUR':true}}</div>
+  <div *ngIf="event?.price === 0"><strong>Price:</strong> FREE</div>
+  <div *ngIf="event?.location.address !== null">
+    <span>Location: {{event?.location.country}}, {{event?.location?.city}}, {{event?.location?.address}}</span>
+  </div>
+  <div *ngIf="event?.facebookEventUrl">
+    Facebook event URL: {{event?.facebookEventUrl}}
+  </div>
+  <div *ngIf="event?.voters">
+    Voters: {{event?.voters.length}}
+  </div>
+  <span *ngIf="event.canceled" style="color:red">
+          CANCELED
+          <i class="glyphicon glyphicon-remove"></i>
+    </span>
+</div>

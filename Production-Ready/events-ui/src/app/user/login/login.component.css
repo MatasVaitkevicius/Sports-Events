@@ -1,0 +1,23 @@
+em { float: right; color: #E05C65; padding-left: 10px; }
+
+.btn-default {
+  color: #ffffff;
+  background-color: #4e5d6c;
+  border-color: transparent;
+  border-radius: 0;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #df691a;
+  border-color: transparent;
+  border-radius: 0;
+}
+
+.btn-primary:hover  {
+  background-color: #ff8c1a;
+}
+
+.btn-default:hover {
+  background-color: #485563;
+}

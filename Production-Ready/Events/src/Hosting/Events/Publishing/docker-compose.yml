@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    events:
+        image: events
+        depends_on:
+            - dbServer
+        ports:
+            - '3000:80'
+        environment:
+            EventsDB__ConnectionString: 'Server=dbServer;Database=Events;Username=postgres;'
+    dbServer:
+        image: postgres:9

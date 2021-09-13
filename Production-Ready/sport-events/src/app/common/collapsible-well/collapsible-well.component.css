@@ -1,0 +1,9 @@
+.well {
+  background-color: #4e5d6c;
+  padding-bottom: 35px;
+}
+
+.well:hover {
+  background-color: #485563;
+  cursor: pointer;
+}

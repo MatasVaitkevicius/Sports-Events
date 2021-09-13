@@ -1,0 +1,29 @@
+div {
+  margin-left: -17.5px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-default {
+  color: #ffffff;
+  background-color: #4e5d6c;
+  border-color: transparent;
+  border-radius: 0;
+}
+
+.btn-group > .btn:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  margin-left: 2px;
+}
+
+.active {
+  background-color: #5f7284;
+}
+
+.btn-default:hover {
+  background-color: #485563;
+}

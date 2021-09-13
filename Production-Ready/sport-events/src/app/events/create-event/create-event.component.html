@@ -1,0 +1,119 @@
+<h1>New Event</h1>
+<hr>
+<div class="col-md-6">
+  <form #newEventForm="ngForm" (ngSubmit)="saveEvent(newEventForm.value)" autocomplete="off" novalidate>
+    <div class="form-group"
+         [ngClass]="{'error': newEventForm.form.get('name')?.invalid && newEventForm.form.get('name')?.touched}">
+      <label for="name">Event Name:</label>
+      <em *ngIf="newEventForm.form.get('name')?.invalid && (newEventForm.form.get('name')?.touched)">Required</em>
+      <input (ngModel)="name" name="name" required id="name" type="text" class="form-control"
+             placeholder="Name of your event..."/>
+    </div>
+
+    <div class="form-group">
+      <label>Sport Type:</label>
+      <em *ngIf="newEventForm.form.get('sportTypeId')?.invalid && (newEventForm.form.get('sportTypeId')?.touched)">Required</em>
+      <select (ngModel)="sportTypeId" class="form-control" required name="sportTypeId" id="sportTypeId">
+        <option value="" selected disabled hidden>Choose Sport Type...</option>
+        <option *ngFor="let sportType of sportTypes" [value]="sportType.sportTypeId">{{sportType.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{'error': newEventForm.form.get('eventDate')?.invalid && newEventForm.form.get('eventDate')?.touched}">
+      <label for="eventDate">Event Date:</label>
+      <em *ngIf="newEventForm.form.get('eventDate')?.invalid && (newEventForm.form.get('eventDate')?.touched)">Required</em>
+      <input (ngModel)="eventDate" name="eventDate" required id="eventDate" type="date" class="form-control"/>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6"
+           [ngClass]="{'error': newEventForm.form.get('timeFrom')?.invalid && newEventForm.form.get('timeFrom')?.touched}">
+        <label for="timeFrom">Event Start Time:</label>
+        <em
+          *ngIf="newEventForm.form.get('timeFrom')?.invalid && (newEventForm.form.get('timeFrom')?.touched) && !newEventForm.form.get('timeFrom')?.hasError('pattern')">Required</em>
+        <em
+          *ngIf="newEventForm.form.get('timeFrom')?.invalid && newEventForm.form.get('timeFrom')?.touched  && newEventForm.form.get('timeFrom')?.hasError('pattern')">Must
+          Be In This Format: HH:MM</em>
+        <input (ngModel)="timeFrom" name="timeFrom" required id="timeFrom" type="text"
+               pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}"
+               class="form-control" placeholder="HH:MM" maxlength=5/>
+      </div>
+      <div class="col-md-6"
+           [ngClass]="{'error': newEventForm.form.get('timeTill')?.invalid && newEventForm.form.get('timeTill')?.touched}">
+        <label for="timeTill">Event End Time:</label>
+        <em
+          *ngIf="newEventForm.form.get('timeTill')?.invalid && (newEventForm.form.get('timeTill')?.touched) && !newEventForm.form.get('timeTill')?.hasError('pattern')">Required</em>
+        <em
+          *ngIf="newEventForm.form.get('timeTill')?.invalid && newEventForm.form.get('timeTill')?.touched  && newEventForm.form.get('timeTill')?.hasError('pattern')">Must
+          Be In This Format: HH:MM</em>
+        <input (ngModel)="timeTill" name="timeTill" required id="timeTill" type="text"
+               pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}"
+               class="form-control" placeholder="HH:MM" maxlength=5/>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{'error': newEventForm.form.get('phoneNumber')?.invalid && newEventForm.form.get('phoneNumber')?.touched}">
+      <label for="phoneNumber">Phone number:</label>
+      <em
+        *ngIf="newEventForm.form.get('phoneNumber')?.invalid && (newEventForm.form.get('phoneNumber')?.touched) && !newEventForm.form.get('phoneNumber')?.hasError('pattern')">Required</em>
+      <em
+        *ngIf="newEventForm.form.get('phoneNumber')?.invalid && newEventForm.form.get('phoneNumber')?.touched  && newEventForm.form.get('phoneNumber')?.hasError('pattern')">Must
+        Be In This Format: +3706xxxxxxx</em>
+      <input (ngModel)="phoneNumber" name="phoneNumber" required id="phoneNumber" type="text" class="form-control"
+             maxlength=12
+             pattern="^[0-9\-\+]{12}$"
+             placeholder="Phone number +370..."/>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'error': newEventForm.form.get('price')?.invalid && newEventForm.form.get('price')?.touched}">
+      <label for="eventPrice">Event Price:</label>
+      <em *ngIf="newEventForm.form.get('price')?.invalid && (newEventForm.form.get('price')?.touched)">Required</em>
+      <input (ngModel)="price" min=0 oninput="validity.valid||(value='')" name="price" required id="eventPrice"
+             type="number" class="form-control"
+             placeholder="Event price. Enter 0 if free..."/>
+    </div>
+
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
+      <div class="form-group">
+        <label for="address">Event Location:</label>
+        <em *ngIf="locationGroup?.invalid && locationGroup?.touched">
+          You must enter either the full location OR Facebook event Url
+        </em>
+        <div class="row">
+          <div class="col-md-6">
+            <input (ngModel)="city" name="city" id="city" type="text" class="form-control" placeholder="City..."/>
+          </div>
+          <div class="col-md-6">
+            <input (ngModel)="country" name="country" id="country" type="text" class="form-control"
+                   placeholder="Country..."/>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input (ngModel)="address" name="address" id="address" type="text" class="form-control"
+               placeholder="Address of event..."/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="facebookEventUrl">Facebook event Url:</label>
+      <em *ngIf="newEventForm.form.get('facebookEventUrl')?.invalid && (newEventForm.form.get('facebookEventUrl')?.touched)">
+        Link is invalid
+      </em>
+      <input (ngModel)="facebookEventUrl" name="facebookEventUrl" id="facebookEventUrl" type="url" pattern="https?://.+"
+             class="form-control" (change)="locationGroup.control.get('address').updateValueAndValidity()"
+             placeholder="Facebook event Url https://..."/>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Event Description:</label>
+      <textarea class="form-control" rows="4" (ngModel)="description" name="description" id="description"
+                placeholder="More details about event...">
+      </textarea>
+    </div>
+    <button type="submit" [disabled]="newEventForm.invalid" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+    <em *ngIf="error">User with this login data does not exist</em>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <em *ngIf="loginForm.form.get('email')?.invalid &&
+                (loginForm.form.get('email')?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="email" name="email" id="email" required type="text" class="form-control"
+             placeholder="Email..."/>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <em *ngIf="loginForm.form.get('password')?.invalid &&
+                (loginForm.form.get('password')?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="password" name="password" id="password" required type="password" class="form-control"
+             placeholder="Password..."/>
+    </div>
+
+    <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+        </span>
+    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+  </form>
+</div>

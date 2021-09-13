@@ -1,0 +1,51 @@
+<h1>Register</h1>
+<hr>
+<div class="col-md-4">
+  <form #loginForm="ngForm" (ngSubmit)="register(loginForm.value)" autocomplete="off" novalidate>
+    <em *ngIf="error">User with that username or email exists</em>
+    <div class="form-group" [ngClass]="{'error': loginForm.form.get('username')?.invalid && loginForm.form.get('username')?.touched}" >
+      <label for="username">User Name:</label>
+      <em *ngIf="loginForm.form.get('username')?.invalid &&
+                (loginForm.form.get('username')?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="username" name="username" id="username" required type="text" class="form-control" placeholder="User Name..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': loginForm.form.get('firstname')?.invalid && loginForm.form.get('firstname')?.touched}" >
+      <label for="firstname">First Name:</label>
+      <em *ngIf="loginForm.form.get('firstname')?.invalid &&
+                (loginForm.form.get('firstname')?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="firstname" name="firstname" id="firstname" required type="text" class="form-control" placeholder="First Name..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': loginForm.form.get('lastname')?.invalid && loginForm.form.get('lastname')?.touched}" >
+      <label for="lastname">Last Name:</label>
+      <em *ngIf="loginForm.form.get('lastname')?.invalid &&
+                (loginForm.form.get('lastname')?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="lastname" name="lastname" id="lastname" required type="text" class="form-control" placeholder="Last Name..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': loginForm.form.get('email')?.invalid && loginForm.form.get('email')?.touched}" >
+      <label for="email">Email:</label>
+      <em *ngIf="loginForm.form.get('email')?.invalid &&
+                (loginForm.form.get('email')?.touched || mouseoverLogin)">Required</em>
+      <input  type="email" (ngModel)="email" name="email" id="email"
+             required class="form-control" placeholder="Email..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': loginForm.form.get('password')?.invalid && loginForm.form.get('password')?.touched}" >
+      <label for="password">Password:</label>
+      <em *ngIf="loginForm.form.get('password')?.invalid &&
+                (loginForm.form.get('password')?.touched || mouseoverLogin)">Required</em>
+      <em *ngIf="passwordError">Passwords do not match</em>
+      <input (ngModel)="password" name="password" id="password" required type="password" class="form-control"placeholder="Password..." />
+    </div>
+    <div class="form-group" [ngClass]="{'error': loginForm.form.get('cpassword')?.invalid && loginForm.form.get('cpassword')?.touched}" >
+      <label for="password">Confirm password:</label>
+      <em *ngIf="loginForm.form.get('cpassword')?.invalid &&
+                (loginForm.form.get('cpassword')?.touched || mouseoverLogin)">Required</em>
+      <em *ngIf="passwordError">Passwords do not match</em>
+      <input (ngModel)="cpassword" name="cpassword" id="cpassword" required type="password" class="form-control"placeholder="Confirm Password..." />
+    </div>
+
+    <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Register</button>
+        </span>
+    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+  </form>
+</div>

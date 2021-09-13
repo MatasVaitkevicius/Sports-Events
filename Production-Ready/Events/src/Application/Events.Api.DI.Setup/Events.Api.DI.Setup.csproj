@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Events.Api.Cases\Events.Api.Cases.csproj" />
+    <ProjectReference Include="..\Events.Api.Cases.Interfaces\Events.Api.Cases.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Domain\Events.Domain.Factories\Events.Domain.Factories.csproj" />
+    <ProjectReference Include="..\..\Domain\Events.Domain.Factories.Interfaces\Events.Domain.Factories.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Repository\Events.Repository\Events.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Events.Domain.Factories.Interfaces\Events.Domain.Factories.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Repository\Events.Repository.Interfaces\Events.Repository.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

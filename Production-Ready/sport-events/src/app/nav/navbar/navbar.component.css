@@ -1,0 +1,28 @@
+.nav.navbar-nav {
+  font-size: 15px;
+}
+
+#searchForm {
+  margin-right: 100px;
+}
+
+@media (max-width: 1200px) {
+  #searchForm {
+    display: none
+  }
+}
+
+li > a.active {
+  color: #F97924;
+}
+
+.dropdown-menu > li > a {
+  cursor: pointer;
+}
+
+.btn-default {
+  color: #ffffff;
+  background-color: #4e5d6c;
+  border-color: transparent;
+  border-radius: 0;
+}
